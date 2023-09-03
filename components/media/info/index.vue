@@ -7,15 +7,16 @@ const directors = computed(() => props.item.credits?.crew.filter(person => perso
 
 <template>
   <div flex flex-row>
-    <div relative w-60rem>
+    <div relative w-20rem min-w-20rem>
       <NuxtImg
         width="400"
         height="600"
         format="webp"
         :src="`/tmdb${item.poster_path}`"
         :alt="item.title || item.name"
-        block w-79 lt-md:hidden rounded-xl border border-white:10
+        block lt-md:hidden rounded-xl border border-white:10
         transition duration-400 object-cover contain-layout aspect="10/16"
+        w-full
       />
       <NuxtImg
         v-if="item.poster_path "
@@ -65,7 +66,7 @@ const directors = computed(() => props.item.credits?.crew.filter(person => perso
                 v-for="person of directors"
                 :key="person.id"
                 :to="`/person/${person.id}`"
-                bg="primary-600/30 hover:primary-400" p="x2 y1" transition="all"
+                bg="primary-600/30 hover:primary-500" p="x2 y1" transition="all"
                 rounded text-sm
               >
                 {{ person.name }}
@@ -99,7 +100,7 @@ const directors = computed(() => props.item.credits?.crew.filter(person => perso
               <NuxtLink
                 v-for="genre of item.genres" :key="genre.id"
                 :to="`/genre/${genre.id}/movie`"
-                bg="primary-600/30 hover:primary-400" p="x2 y1" transition="all"
+                bg="primary-600/30 hover:primary-500" p="x2 y1" transition="all"
                 rounded text-sm
               >
                 {{ genre.name }}
@@ -147,6 +148,7 @@ const directors = computed(() => props.item.credits?.crew.filter(person => perso
         v-for="i of item.credits?.cast"
         :key="i.id"
         :person="i"
+        w-15rem min-w-15rem
       />
     </Slider>
   </div>

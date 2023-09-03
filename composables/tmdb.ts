@@ -125,7 +125,6 @@ export function getPeople(): Promise<PageResult<Person>> {
 /**
  * Search (searches movies, tv and people)
  */
-
-export function searchShows(query: string, page = 1) {
-  return fetchTMDB('search/multi', { query, page, include_adult: false })
+export function search(type: 'tv' | 'movie' | 'person', query: string, page = 1) {
+  return fetchTMDB(`search/${type}`, { query, page, include_adult: false })
 }
