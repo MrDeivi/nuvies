@@ -1,0 +1,52 @@
+<script setup lang="ts">
+import type { MediaType } from '~/types'
+
+const route = useRoute()
+const toggle = ref('Details')
+const options = ref(['Details', 'Shots', 'Videos'])
+
+const id = computed(() => route.params.id as string)
+const type = computed(() => route.params.type as MediaType || 'movie')
+
+const [item, recommendations] = await Promise.all([
+  getMedia(type.value, id.value),
+  getRecommendations(type.value, id.value),
+])
+const trailer = computed(() => item ? getTrailer(item) : undefined)
+
+const $img = useImage()
+const siteStore = useSiteStore()
+onBeforeMount(() => siteStore.blurMediaUrl = item.backdrop_path)
+
+useHead({
+  title: item.name || item.title,
+  meta: [
+    { name: 'description', content: item.overview },
+    { property: 'og:image', content: $img(`/tmdb${item.poster_path}`, { width: 1200, height: 630 }) },
+  ],
+})
+</script>
+
+<template>
+  <div flex justify="center">
+    <div wfull max-w-80rem>
+      <MediaCardBig :type="type" :trailer="trailer" :item="item" />
+    </div>
+  </div>
+
+  <div max-w-40rem m="x-auto t-15 b-30">
+    <Toggle v-model="toggle" :options="options" />
+  </div>
+
+  <div max-w-80rem m="x-auto t-10">
+    <MediaInfo v-if="toggle === 'Details'" :item="item" />
+    <MediaInfoShots v-else-if="toggle === 'Shots'" :item="item" />
+    <MediaInfoVideos v-else :item="item" />
+    <div mt30>
+      <MediaContainer hidde-btn type="movie" :items="recommendations.results" :title="`Recommended ${type === 'movie' ? 'Movies' : 'Tv Shows'}`" />
+    </div>
+  </div>
+</template>
+
+<style>
+</style>
