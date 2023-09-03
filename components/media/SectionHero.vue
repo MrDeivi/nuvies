@@ -6,7 +6,7 @@ const props = defineProps<{ trailer?: string | null; item: Media; recommendation
 
 <template>
   <div grid grid-cols-8 gap-7>
-    <MediaCardBig :item="item" :type="type" :trailer="trailer" />
+    <MediaCardBig :item="item" :type="type" :trailer="trailer" :show-details="true" />
     <div grid grid-cols-1 grid-rows-3 gap7 col-span-2 z2 max-h-60vh>
       <MediaCardRecommendation :type="type" :item="recommendations[1]" />
       <MediaCardRecommendation :type="type" :item="recommendations[2]" />

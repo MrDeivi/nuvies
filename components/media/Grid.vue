@@ -1,9 +1,10 @@
 <script lang="ts" setup>
 import type { Media, MediaType } from '~/types'
 
-const props = defineProps<{ loading: boolean; fetchMore: Function; items: Media[]; type: MediaType }>()
+const props = defineProps<{ loading?: boolean; fetchMore?: Function; items: Media[]; type: MediaType }>()
 const { loading, fetchMore } = toRefs(props)
-useInfiniteGrid(loading, fetchMore.value)
+if (fetchMore?.value)
+  useInfiniteGrid(loading, fetchMore.value)
 </script>
 
 <template>
