@@ -48,12 +48,12 @@ useEventListener('keydown', (e) => {
       max-w-full max-h-full object-contain rounded-3xl
     />
     <div absolute left-0 top="1/2">
-      <button py10 px4 bg-black:30 op10 hover:op100 @click="prev()">
+      <button py10 px4 bg-black:30 hover:op70 @click="prev()">
         <div i-ph-caret-left-light text-3xl text-white />
       </button>
     </div>
     <div absolute right-0 top="1/2">
-      <button py10 px4 bg-black:30 op10 hover:op100 @click="next()">
+      <button py10 px4 bg-black:30 hover:op70 @click="next()">
         <div i-ph-caret-right-light text-3xl text-white />
       </button>
     </div>
