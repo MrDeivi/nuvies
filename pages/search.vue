@@ -45,9 +45,9 @@ watch(data, () => {
 <template>
   <div flex="~ col" justify="center">
     <div px7 flex items-center mb10 justify="between">
-      <h1 text-3xl font-bold>
+      <TextHeader>
         Search results for: {{ query }}
-      </h1>
+      </TextHeader>
       <Toggle v-model:model-value="toggle" :options="options" w30rem />
     </div>
     <MediaGrid v-if="toggle === 'Movies'" class="p0!" type="movie" :items="data" :fetch-more="fetchMore" :loading="loading" />

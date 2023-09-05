@@ -16,9 +16,9 @@ onBeforeMount(() => {
 <template>
   <div class="">
     <div px7 flex items-center justify="between">
-      <h1 text-3xl font-bold>
+      <TextHeader>
         Trending people
-      </h1>
+      </TextHeader>
     </div>
     <PersonGrid :items="data" :fetch-more="fetchMore" :loading="loading" />
     <Loader v-show="loading" />

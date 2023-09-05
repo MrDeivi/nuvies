@@ -38,11 +38,11 @@ watch([type, toggle], () => {
 
 <template>
   <div class="">
-    <div px7 flex items-center justify="between">
-      <h1 text-3xl font-bold>
+    <div px7 flex items-center justify="between" lt-md="items-start flex-col px4">
+      <TextHeader>
         {{ title }}
-      </h1>
-      <Toggle v-model:model-value="toggle" :options="options" />
+      </TextHeader>
+      <Toggle v-model:model-value="toggle" :options="options" lt-md="text-sm mt3" />
     </div>
     <MediaGrid :type="type" :items="data" :fetch-more="fetchMore" :loading="loading" />
     <Loader v-show="loading" />

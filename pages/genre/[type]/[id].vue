@@ -23,9 +23,9 @@ onBeforeMount(() => {
 <template>
   <div class="">
     <div px7 flex items-center justify="between">
-      <h1 text-3xl font-bold>
+      <TextHeader>
         {{ name }}
-      </h1>
+      </TextHeader>
     </div>
     <MediaGrid :type="type" :items="data" :fetch-more="fetchMore" :loading="loading" />
     <Loader v-show="loading" />

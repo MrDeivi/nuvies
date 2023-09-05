@@ -11,9 +11,9 @@ onBeforeMount(() => {
 <template>
   <div class="">
     <div px7 flex items-center justify="between">
-      <h1 text-3xl font-bold>
+      <TextHeader>
         Discover Movies by Genres
-      </h1>
+      </TextHeader>
     </div>
     <div grid="~ cols-minmax-10rem lg:cols-minmax-15rem" gap="x5 y15" p8>
       <div v-for="(genre, index) in results.genres" :key="index" class="group">
