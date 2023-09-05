@@ -46,7 +46,10 @@ defineProps<{
         <div i-ph:question ma text-4xl />
       </div>
     </div>
-    <div max-w-17rem truncate font-bold :title="item.title || item.name ">
+    <div
+      :class="cardClass"
+      max-w-17rem truncate font-bold :title="item.title || item.name "
+    >
       {{ item.title || item.name }}
     </div>
     <div flex text-sm gap-2 items-center>

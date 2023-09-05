@@ -5,9 +5,9 @@
 <template>
   <div w-full flex justify="center" flex-col items-center mt15 p="l-70 " lt-lg="pl0">
     <LogosAppLogo text-4xl w-5rem />
-    <h1 text-3xl font-bold>
+    <TextHeader>
       Nuvies
-    </h1>
+    </TextHeader>
   </div>
 </template>
 

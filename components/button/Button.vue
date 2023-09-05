@@ -5,7 +5,7 @@
 <template>
   <div
     hover:bg-white:20 bg-white:10 py3 px5 rounded-xl cursor-pointer
-    active:bg-white:10
+    active:bg-white:10 lt-md="px3 py2"
     transition="all duration-100"
   >
     <slot />

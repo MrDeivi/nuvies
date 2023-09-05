@@ -4,8 +4,9 @@ const route = useRoute()
 
 <template>
   <div
-    fixed w-60 left-0 top-0 z-50 h-100vh flex flex-col py-2
+    fixed w-60 left-0 top-0 z-50 h-100vh flex-col py-2
     overflow-hidden transform lt-lg:translate-x--80 transition-all duration-200
+    lt-xl:hidden flex
   >
     <SidebarHeader />
 
@@ -29,9 +30,6 @@ const route = useRoute()
           <SidebarLink :to="{ path: '/genre' }" icon="i-solar:widget-2-bold-duotone">
             Genres
           </SidebarLink>
-          <!-- <SidebarLink :to="{ path: '/tv-lists' }" icon="i-solar:chat-round-video-bold-duotone">
-            Tv List
-          </SidebarLink> -->
           <SidebarLink :to="{ path: '/people' }" icon="i-solar:users-group-rounded-bold-duotone">
             People
           </SidebarLink>

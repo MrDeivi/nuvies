@@ -5,7 +5,7 @@ import '@unocss/reset/tailwind.css'
 <template>
   <NuxtLoadingIndicator :duration="10000" />
   <NuxtLayout name="default">
-    <div h-full w-full font-sans of-hidden>
+    <div h-full w-full font-sans>
       <NuxtPage />
     </div>
   </NuxtLayout>

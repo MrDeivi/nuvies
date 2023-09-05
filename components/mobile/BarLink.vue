@@ -1,7 +1,6 @@
 <script lang="ts" setup>
 const props = defineProps<{
   icon: string
-  activeIcon: string
   to?: { path?: string; name?: string }
 }>()
 </script>
@@ -9,18 +8,19 @@ const props = defineProps<{
 <template>
   <NuxtLink v-slot="{ isActive: active }" :to="to">
     <div
-      hfull px-4 transition-all duration-200 flex justify-center items-center
+      hfull px-4 transition-all duration-200 flex justify-center items-center lt-sm:py2
       class="group"
     >
       <div
         group-hover:text-primary-400 flex flex-col justify-center items-center
-        :class="{ 'text-primary-400': active }"
+        :class="{ 'text-primary-500': active }"
       >
         <span
-          :class="active ? activeIcon : icon"
+          :class="icon"
+          lt-sm="text-xl"
           text-2xl inline-flex
         />
-        <span text-xs mt1>
+        <span text-sm font="bold" mt1 lt-sm="text-xs" class="whitespace-nowrap">
           <slot />
         </span>
       </div>

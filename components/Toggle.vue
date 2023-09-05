@@ -42,10 +42,10 @@ function selectValue(i: number) {
       :key="index"
       z-4 cursor="pointer" flex flex-grow
       py2 px4 text-center justify="center"
-      rounded-4xl select-none
+      rounded-4xl select-none items-center
       @click="selectValue(index)"
     >
-      <span font-bold>{{ option }}</span>
+      <span whitespace-nowrap font-bold>{{ option }}</span>
     </label>
 
     <div

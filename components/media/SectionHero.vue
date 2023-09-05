@@ -5,9 +5,14 @@ const props = defineProps<{ trailer?: string | null; item: Media; recommendation
 </script>
 
 <template>
-  <div grid grid-cols-8 gap-7>
+  <div grid grid-cols-8 gap-7 lt-xl:px5>
     <MediaCardBig :item="item" :type="type" :trailer="trailer" :show-details="true" />
-    <div grid grid-cols-1 grid-rows-3 gap7 col-span-2 z2 max-h-60vh>
+    <div
+      grid gap7 col-span-8 z2 max-h-60vh
+      grid-cols-3 grid-rows-1
+      lg="grid-cols-1 grid-rows-3 col-span-2"
+      lt-md-hidden
+    >
       <MediaCardRecommendation :type="type" :item="recommendations[1]" />
       <MediaCardRecommendation :type="type" :item="recommendations[2]" />
       <MediaCardRecommendation :type="type" :item="recommendations[3]" />

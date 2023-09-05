@@ -23,7 +23,7 @@ onMounted(() => {
 
 <template>
   <div flex justify="center">
-    <div max-w-95rem>
+    <div class="2xl:max-w-90rem xl:max-w-70rem w-full">
       <MediaSectionHero type="movie" :item="item" :trailer="trailer" :recommendations="popularMovies.results" />
       <MediaContainer type="movie" :items="popularMovies.results.slice(3)" title="Popular Movies" />
       <MediaContainer type="tv" :items="popularShows.results" title="Popular TV Shows" />

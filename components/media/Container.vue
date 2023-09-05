@@ -5,11 +5,11 @@ const props = defineProps<{ title: string; items: Media[]; type: MediaType; hidd
 </script>
 
 <template>
-  <div class="mt-15">
-    <div flex my-7 justify="between" z-10 items-center>
-      <h1 text-3xl font-bold>
+  <div mt15 lt-md:mt-7>
+    <div flex my-7 justify="between" z-10 items-center lt-xl:px5>
+      <TextHeader>
         {{ title }}
-      </h1>
+      </TextHeader>
       <NuxtLink v-if="!hiddeBtn" :to="`/${type}/explore/popular`" z-10>
         <Button>
           See All
@@ -17,8 +17,8 @@ const props = defineProps<{ title: string; items: Media[]; type: MediaType; hidd
       </NuxtLink>
     </div>
 
-    <div class="" relative>
-      <Slider pb5>
+    <div class="" relative lt-xl:pl4>
+      <Slider pb5 lt-md:space-x-2>
         <template
           v-for="i of items"
           :key="i.id"
@@ -26,7 +26,7 @@ const props = defineProps<{ title: string; items: Media[]; type: MediaType; hidd
           <MediaCard
             v-if="i.poster_path"
             :type="type"
-            card-class="w-15rem"
+            card-class="w-15rem lt-md:w-10rem max-h-15rem"
             :item="i"
           />
         </template>

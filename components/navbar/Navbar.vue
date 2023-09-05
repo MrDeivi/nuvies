@@ -13,7 +13,7 @@ function onSearch() {
 
 <template>
   <div
-    lt-lg-hidden fixed top-0 left-90
+    lt-xl-hidden fixed top-0 left-90
     z-50 h-17 flex items-center pr-8 md:h-24
     style="width: calc(100vw - 25.4rem);"
   >
