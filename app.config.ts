@@ -1,4 +1,4 @@
 export default defineAppConfig({
-//   apiUrl: 'https://api.nuxic.deivi.me',
-  apiUrl: 'http://localhost:3000',
+  apiUrl: 'https://api.nuvies.deivi.me',
+//   apiUrl: 'http://localhost:3000',
 })

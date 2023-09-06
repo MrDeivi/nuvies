@@ -1,6 +1,7 @@
 const isDev = process.env.NODE_ENV === 'development'
 
-const apiUrl = 'http://localhost:3000'
+// const apiUrl = 'http://localhost:3000'
+const apiUrl = 'https://api.nuvies.deivi.me'
 
 export default defineNuxtConfig({
   plugins: [
