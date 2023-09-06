@@ -2,7 +2,8 @@
   "private": true,
   "scripts": {
     "dev": "nitropack dev",
-    "build": "nitropack build"
+    "build": "nitropack build",
+    "start": "node ./.output/server/index.mjs"
   },
   "devDependencies": {
     "nitropack": "^2.4.1",
