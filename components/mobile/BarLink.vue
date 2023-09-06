@@ -2,18 +2,19 @@
 const props = defineProps<{
   icon: string
   to?: { path?: string; name?: string }
+  active?: boolean
 }>()
 </script>
 
 <template>
-  <NuxtLink v-slot="{ isActive: active }" :to="to">
+  <NuxtLink v-slot="{ isActive }" :to="to" class="no-touch">
     <div
       hfull px-4 transition-all duration-200 flex justify-center items-center lt-sm:py2
       class="group"
     >
       <div
         group-hover:text-primary-400 flex flex-col justify-center items-center
-        :class="{ 'text-primary-500': active }"
+        :class="{ 'text-primary-500': active || isActive }"
       >
         <span
           :class="icon"

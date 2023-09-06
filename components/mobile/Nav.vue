@@ -9,7 +9,7 @@ const { y } = useWindowScroll()
     :class="{ 'backdrop-blur-xl bg-white:10': y > 10 }"
   >
     <div hfull flex items-center lt-xl-px-5 px-10 lt-md="px4">
-      <NuxtLink to="/" flex items-center>
+      <NuxtLink to="/" flex items-center class="no-touch">
         <LogosAppLogo class="scale-120" w12 />
         <h2 class="mb-0 ml2 font-bold text-3xl select-none">
           Nuvies
@@ -22,14 +22,11 @@ const { y } = useWindowScroll()
         </Button>
       </NuxtLink>
 
-      <!-- <a href="https://github.com/MrDeivi/nuvies" target="__blank" ml-auto>
-        <div bg-white:10 round hover:bg-white:20>
-          <div p-2 flex items-center>
-            <span i-akar-icons:github-fill inline-block text-2xl mr-4 />
-            View repo
-          </div>
-        </div>
-      </a> -->
+      <Button class="!rounded-full !p2" ml2>
+        <a href="https://github.com/MrDeivi/nuvies" target="__blank" ml-auto>
+          <span i-akar-icons:github-fill flex text-xl />
+        </a>
+      </Button>
     </div>
   </div>
 </template>

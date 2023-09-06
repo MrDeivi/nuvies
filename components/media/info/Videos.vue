@@ -5,7 +5,7 @@ const props = defineProps<{ item: Media }>()
 </script>
 
 <template>
-  <div min-h-40rem>
+  <div min-h-40rem lt-xl="px5">
     <div v-if="!item.videos?.results.length" flex="~ col" space="y7">
       <span i-solar:emoji-funny-circle-line-duotone flex text-7xl text-gray m-auto />
       <span text-2xl m-auto flex text-gray>No videos</span>

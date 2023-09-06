@@ -15,7 +15,7 @@ onBeforeMount(() => {
 
 <template>
   <div class="">
-    <div px7 flex items-center justify="between">
+    <div px7 flex items-center justify="between" lt-md="px5">
       <TextHeader>
         Trending people
       </TextHeader>

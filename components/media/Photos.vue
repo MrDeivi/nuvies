@@ -9,7 +9,7 @@ const show = useImageModal()
 </script>
 
 <template>
-  <div flex="~ col" py8 gap6>
+  <div flex="~ col" py8 gap6 lt-xl="px5">
     <div flex gap-4 items-baseline>
       <h1 text-3xl font="bold">
         Backdrops

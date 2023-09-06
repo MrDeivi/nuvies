@@ -7,7 +7,7 @@ const directors = computed(() => props.item.credits?.crew.filter(person => perso
 
 <template>
   <div flex flex-row>
-    <div relative w-20rem min-w-20rem>
+    <div relative w-20rem min-w-20rem lt-lg="hidden">
       <NuxtImg
         width="400"
         height="600"
@@ -29,7 +29,7 @@ const directors = computed(() => props.item.credits?.crew.filter(person => perso
       />
     </div>
 
-    <div flex="~ col" m="l-30">
+    <div flex="~ col" m="l-30" lt-lg="ml0" lt-xl="px5">
       <h1 text-3xl font="bold">
         Storyline
       </h1>
@@ -140,10 +140,10 @@ const directors = computed(() => props.item.credits?.crew.filter(person => perso
   </div>
 
   <div mt20>
-    <h1 text-3xl font="bold">
+    <h1 text-3xl font="bold" lt-xl="px5">
       Cast
     </h1>
-    <Slider pb5>
+    <Slider pb5 lt-xl="!pl4">
       <PersonCard
         v-for="i of item.credits?.cast"
         :key="i.id"

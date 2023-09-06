@@ -29,19 +29,21 @@ useHead({
 
 <template>
   <div flex justify="center">
-    <div wfull max-w-80rem>
+    <div wfull max-w-80rem lt-xl="px5">
       <MediaCardBig :type="type" :trailer="trailer" :item="item" />
     </div>
   </div>
 
-  <div max-w-40rem m="x-auto t-15 b-30">
+  <div max-w-40rem m="x-auto t-15 b-30" lt-xl="px5 mb0">
     <Toggle v-model="toggle" :options="options" />
   </div>
 
   <div max-w-80rem m="x-auto t-10">
-    <MediaInfo v-if="toggle === 'Details'" :item="item" />
-    <MediaInfoShots v-else-if="toggle === 'Shots'" :item="item" />
-    <MediaInfoVideos v-else :item="item" />
+    <div>
+      <MediaInfo v-if="toggle === 'Details'" :item="item" />
+      <MediaInfoShots v-else-if="toggle === 'Shots'" :item="item" />
+      <MediaInfoVideos v-else :item="item" />
+    </div>
     <div mt30>
       <MediaContainer hidde-btn type="movie" :items="recommendations.results" :title="`Recommended ${type === 'movie' ? 'Movies' : 'Tv Shows'}`" />
     </div>

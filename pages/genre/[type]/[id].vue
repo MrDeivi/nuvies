@@ -22,12 +22,12 @@ onBeforeMount(() => {
 
 <template>
   <div class="">
-    <div px7 flex items-center justify="between">
+    <div px7 flex items-center justify="between" lt-md="px5">
       <TextHeader>
         {{ name }}
       </TextHeader>
     </div>
-    <MediaGrid :type="type" :items="data" :fetch-more="fetchMore" :loading="loading" />
+    <MediaGrid :type="type" :items="data" :fetch-more="fetchMore" :loading="loading" class="lt-md:px5" />
     <Loader v-show="loading" />
   </div>
 </template>

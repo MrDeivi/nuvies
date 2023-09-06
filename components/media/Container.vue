@@ -26,7 +26,7 @@ const props = defineProps<{ title: string; items: Media[]; type: MediaType; hidd
           <MediaCard
             v-if="i.poster_path"
             :type="type"
-            card-class="w-15rem lt-md:w-10rem max-h-15rem"
+            card-class="w-15rem lt-md:(w-10rem max-h-15rem)"
             :item="i"
           />
         </template>
