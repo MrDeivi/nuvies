@@ -8,7 +8,7 @@ if (fetchMore?.value)
 </script>
 
 <template>
-  <div grid="~ cols-minmax-10rem lg:cols-minmax-15rem" gap="x5 y15" lt-md="gap-x-2 p4" p8>
+  <div grid="~ cols-minmax-10rem lg:cols-minmax-15rem" gap="x5 y15" lt-md="gap-x-3 gap-y-10 p4" p8>
     <template
       v-for="item in items"
       :key="item.id"

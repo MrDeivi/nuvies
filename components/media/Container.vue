@@ -17,8 +17,8 @@ const props = defineProps<{ title: string; items: Media[]; type: MediaType; hidd
       </NuxtLink>
     </div>
 
-    <div class="" relative lt-xl:pl4>
-      <Slider pb5 lt-md:space-x-2>
+    <div class="" relative>
+      <Slider pb5 lt-md:space-x-2 class="lt-xl:!px5">
         <template
           v-for="i of items"
           :key="i.id"

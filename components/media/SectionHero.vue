@@ -5,8 +5,8 @@ const props = defineProps<{ trailer?: string | null; item: Media; recommendation
 </script>
 
 <template>
-  <div class="pl3">
-    <Slider pb5 lt-md:space-x-2 md-hidden>
+  <div class="">
+    <Slider pb5 class="!px5" lt-md:space-x-2 md-hidden>
       <MediaCardBig :item="item" :type="type" :trailer="trailer" :show-details="true" class="min-w-25rem min-h-17rem" />
       <MediaCardBig :item="recommendations[1]" :type="type" :show-details="true" class="min-w-25rem min-h-17rem" />
       <MediaCardBig :item="recommendations[2]" :type="type" :show-details="true" class="min-w-25rem min-h-17rem" />

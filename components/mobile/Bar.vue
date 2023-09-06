@@ -14,11 +14,11 @@ const route = useRoute()
         <MobileBarLink :to="{ path: '/movie/explore/popular' }" :active="route.path.startsWith('/movie/explore')" icon="i-solar:video-frame-play-vertical-bold-duotone">
           Movies
         </MobileBarLink>
-        <MobileBarLink :to="{ path: '/genre' }" icon="i-iconoir:search">
-          Genres
-        </MobileBarLink>
         <MobileBarLink :to="{ path: '/tv/explore/popular' }" :active="route.path.startsWith('/tv/explore')" icon="i-solar:tv-bold-duotone">
           Tv Shows
+        </MobileBarLink>
+        <MobileBarLink :to="{ path: '/genre' }" icon="i-solar:widget-2-bold-duotone">
+          Genres
         </MobileBarLink>
         <MobileBarLink :to="{ path: '/people' }" icon="i-solar:users-group-rounded-bold-duotone">
           People

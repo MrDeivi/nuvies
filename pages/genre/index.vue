@@ -15,7 +15,7 @@ onBeforeMount(() => {
         Discover movies by genres
       </TextHeader>
     </div>
-    <div grid="~ cols-minmax-10rem lg:cols-minmax-15rem" gap="x5 y15" p8>
+    <div grid="~ cols-minmax-10rem lg:cols-minmax-15rem" gap="x5 y15" p8 lt-lg="p5 gap-y5">
       <div v-for="(genre, index) in results.genres" :key="index" class="group">
         <NuxtLink :to="`/genre/movie/${genre.id}`">
           <div
