@@ -36,5 +36,5 @@ export async function usePaginatedFetch<T = any>(fetchFn: (page: number) => Prom
     isLastPage.value = false
   }
 
-  return { data: result, fetchMore, loading: pending, page, isLastPage, reset }
+  return { data: result, fetchMore, execute, loading: pending, page, isLastPage, reset }
 }

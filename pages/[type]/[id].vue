@@ -34,7 +34,7 @@ useHead({
     </div>
   </div>
 
-  <div max-w-40rem m="x-auto t-15 b-30" lt-xl="px5 mb0">
+  <div max-w-40rem m="x-auto t-15 b-30" lt-xl="px5 mb0 mt10">
     <Toggle v-model="toggle" :options="options" />
   </div>
 
@@ -44,7 +44,7 @@ useHead({
       <MediaInfoShots v-else-if="toggle === 'Shots'" :item="item" />
       <MediaInfoVideos v-else :item="item" />
     </div>
-    <div mt30>
+    <div mt30 lt-lg="mt-0">
       <MediaContainer hidde-btn type="movie" :items="recommendations.results" :title="`Recommended ${type === 'movie' ? 'Movies' : 'Tv Shows'}`" />
     </div>
   </div>

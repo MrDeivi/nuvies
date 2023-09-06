@@ -4,9 +4,9 @@ const route = useRoute()
 
 <template>
   <div
-    fixed xl:hidden bottom-7 left-0 wfull h-16 z-300 p3
+    fixed xl:hidden bottom-7 left-0 wfull h-16 z-300 p4
   >
-    <div backdrop-blur-2xl rounded-full of-hidden p2 bg-white:10>
+    <div backdrop-blur-2xl rounded-full of-hidden p1 bg-white:10>
       <div flex="~ row" justify="around" hfull>
         <MobileBarLink :to="{ path: '/' }" icon="i-solar:home-angle-2-bold">
           Home

@@ -5,7 +5,7 @@ const props = defineProps<{ title: string; items: Media[]; type: MediaType; hidd
 </script>
 
 <template>
-  <div mt15 lt-md:mt-7>
+  <div mt15 lt-md:mt-6>
     <div flex my-7 justify="between" z-10 items-center lt-xl:px5>
       <TextHeader>
         {{ title }}
