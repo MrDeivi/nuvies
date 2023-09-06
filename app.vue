@@ -64,4 +64,7 @@ html, body , #__nuxt{
   color: white;
   background: #e7375a
 }
+.nuxt-loading-indicator{
+  background: repeating-linear-gradient(to right, #e7375a 0%, rgb(254 52 147) 50%, rgb(225 0 26) 100%) 0% 0% / 3333.33% !important;
+}
 </style>

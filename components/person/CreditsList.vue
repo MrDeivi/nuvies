@@ -15,7 +15,7 @@ const credits = [...props.items]
         {{ title }}
       </h1>
 
-      <div grid="~ cols-minmax-10rem lg:cols-minmax-20rem" gap="5">
+      <div grid="~ cols-minmax-15rem lg:cols-minmax-20rem" gap="5">
         <NuxtLink
           v-for="i of credits"
           :key="i.id"

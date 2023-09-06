@@ -6,17 +6,17 @@ const { person } = toRefs(props)
 </script>
 
 <template>
-  <div flex flex-row>
-    <div relative w-20rem min-w-20rem>
+  <div flex flex-row lt-lg="flex-col" lt-xl="px-5">
+    <div relative w-20rem min-w-20rem m-auto>
       <NuxtImg
         width="400"
         height="600"
         format="webp"
         :src="`/tmdb${person.profile_path}`"
         :alt="person.name || person.also_known_as?.[0]"
-        block lt-md:hidden rounded-xl border border-white:10
+        block rounded-xl border border-white:10
         transition duration-400 object-cover contain-layout aspect="10/16"
-        w-full
+        w-full lt-lg="max-h-25rem"
       />
       <NuxtImg
         v-if="person.profile_path"
@@ -29,8 +29,8 @@ const { person } = toRefs(props)
       />
     </div>
 
-    <div flex="~ col" m="l-30">
-      <h1 text-3xl font="bold">
+    <div flex="~ col" m="l-30" lt-lg="ml0 pt10" lt-xl="px0">
+      <h1 text-3xl font="bold" lt-xl="text-center">
         {{ person.name }}
       </h1>
       <p mt4 text-lg>
