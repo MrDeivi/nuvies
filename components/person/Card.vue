@@ -6,6 +6,7 @@ const imgLoaded = ref(false)
 
 const $img = useImage()
 const imgSmall = $img(`/tmdb${props.person.profile_path}`, { width: 100, height: 150 })
+const imgBig = $img(`/tmdb${props.person.profile_path}`, { width: 500, height: 800 })
 </script>
 
 <template>
@@ -18,7 +19,7 @@ const imgSmall = $img(`/tmdb${props.person.profile_path}`, { width: 100, height:
     >
       <ImageBlurLoader
         v-if="person.profile_path"
-        :big-image-src="`/tmdb${person.profile_path}`"
+        :big-image-src="imgBig"
         :small-image-src="imgSmall"
         format="webp"
         width="500"

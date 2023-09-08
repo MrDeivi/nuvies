@@ -5,6 +5,7 @@ const props = defineProps<{
 }>()
 const emit = defineEmits(['bigLoaded'])
 const loaded = ref()
+const visible = ref()
 const currentSrc = ref(props.smallImageSrc)
 
 function loadedBigImage() {
@@ -12,16 +13,24 @@ function loadedBigImage() {
   emit('bigLoaded')
   nextTick(() => loaded.value = true)
 }
+
+const target = ref()
+
+useIntersectionObserver(target, ([{ isIntersecting }], observerElement) => {
+  if (isIntersecting && !visible.value)
+    visible.value = true
+}, { immediate: true })
 </script>
 
 <template>
   <NuxtImg
+    ref="target"
     transition-all duration-500
     :src="currentSrc"
     v-bind="$attrs"
     :class="{ 'blur-xl': !loaded }"
   />
-  <NuxtImg v-if="!loaded" :src="bigImageSrc" absolute op0 loading="lazy" @load="loadedBigImage" />
+  <NuxtImg v-if="!loaded && visible" :src="bigImageSrc" absolute op0 loading="lazy" @load="loadedBigImage" />
 </template>
 
 <style lang="scss" scoped></style>

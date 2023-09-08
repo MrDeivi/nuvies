@@ -9,6 +9,7 @@ const props = defineProps<{
 
 const $img = useImage()
 const imgSmall = $img(`/tmdb${props.item.poster_path}`, { width: 100, height: 200 })
+const imgBig = $img(`/tmdb${props.item.poster_path}`, { width: 500, height: 800 })
 </script>
 
 <template>
@@ -24,7 +25,7 @@ const imgSmall = $img(`/tmdb${props.item.poster_path}`, { width: 100, height: 20
       <div overflow="hidden" h-full bg-white:10 mb3 wfull rounded-xl>
         <ImageBlurLoader
           v-if="item.poster_path"
-          :big-image-src="`/tmdb${item.poster_path}`"
+          :big-image-src="imgBig"
           :small-image-src="imgSmall"
           format="webp" width="400"
           height="600" :alt="item.title || item.name"
