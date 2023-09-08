@@ -1,5 +1,21 @@
 <script setup>
 import '@unocss/reset/tailwind.css'
+
+useHead({
+  htmlAttrs: {
+    lang: 'en',
+  },
+  title: 'Nuvies',
+  titleTemplate: title => title !== 'Nuvies' ? `${title} · Nuvies` : title,
+  meta: [
+    { name: 'description', content: 'Discover hundred of movies and tv shows in Nuvies' },
+    { property: 'og:image', content: 'https://nuvies.deivi.me/img/og_image.png' },
+    { property: 'og:type', content: 'website' },
+    { property: 'twitter:card', content: 'summary_large_image' },
+    { property: 'twitter:domain', content: 'nuvies.deivi.me' },
+    { property: 'twitter:url', content: 'https://nuvies.deivi.me/' },
+  ],
+})
 </script>
 
 <template>
