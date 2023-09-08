@@ -9,6 +9,22 @@ const props = defineProps<{
 
 const $img = useImage()
 const imgSmall = $img(`/tmdb${props.item.poster_path}`, { width: 100, height: 200 })
+
+useHead({
+  htmlAttrs: {
+    lang: 'en',
+  },
+  title: 'Nuxic',
+  titleTemplate: title => title !== 'Nuvies' ? `${title} · Nuvies` : title,
+  meta: [
+    { name: 'description', content: 'Discover hundred of movies and tv shows in Nuvies' },
+    { property: 'og:image', content: 'https://nuvies.deivi.me/img/og_image.png' },
+    { property: 'og:type', content: 'website' },
+    { property: 'twitter:card', content: 'summary_large_image' },
+    { property: 'twitter:domain', content: 'nuvies.deivi.me' },
+    { property: 'twitter:url', content: 'https://nuvies.deivi.me/' },
+  ],
+})
 </script>
 
 <template>
@@ -42,7 +58,7 @@ const imgSmall = $img(`/tmdb${props.item.poster_path}`, { width: 100, height: 20
         /> -->
       </div>
 
-      <NuxtImg
+      <!-- <NuxtImg
         v-if="imgSmall"
         width="400"
         height="600"
@@ -50,11 +66,11 @@ const imgSmall = $img(`/tmdb${props.item.poster_path}`, { width: 100, height: 20
         :src="imgSmall"
         class="z--10  w-70% left-50% group-hover:op0 transition-all duration-700"
         absolute blur-lg opacity="10" h-4rem bottom-0 transform="translate-x--50% translate-y--5"
-      />
+      /> -->
 
-      <div v-else h-full op10 flex>
+      <!-- <div v-else h-full op10 flex>
         <div i-ph:question ma text-4xl />
-      </div>
+      </div> -->
     </div>
     <div
       :class="cardClass"
