@@ -41,7 +41,7 @@ useHead({
   </div>
   <div flex justify="center">
     <div wfull lt-xl="px5" mt5>
-      <ButtonPrimary v-if="trailer" wfull text-center md:hidden justify="center" h12 @click="playTrailer">
+      <ButtonPrimary v-if="trailer" wfull text-center md:hidden justify="center" h12 relative @click="playTrailer">
         <span i-solar:play-bold />
         <span>Play Trailer</span>
       </ButtonPrimary>

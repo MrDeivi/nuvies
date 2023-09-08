@@ -14,7 +14,7 @@ const imgSmall = $img(`/tmdb${props.item.backdrop_path}`, { width: 150, height: 
 </script>
 
 <template>
-  <div col-span-8 lg:col-span-6 h-auto max-h-60vh relative rounded-xl bg-white:10 overflow="hidden">
+  <div col-span-8 lg:col-span-6 h-auto max-h-60vh relative rounded-xl bg-white:10 overflow="hidden" @click="navigateTo(`/${type}/${item.id}`)">
     <ImageBlurLoader
       :big-image-src="`/tmdb${item.backdrop_path}`"
       :small-image-src="imgSmall"

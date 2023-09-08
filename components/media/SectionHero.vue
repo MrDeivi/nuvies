@@ -7,18 +7,10 @@ const props = defineProps<{ trailer?: string | null; item: Media; recommendation
 <template>
   <div class="">
     <Slider pb5 class="!px5" lt-md:space-x-2 md-hidden>
-      <NuxtLink :to="`/movie/${item.id}`">
-        <MediaCardBig :item="item" :type="type" :trailer="trailer" :show-details="true" class="min-w-25rem min-h-17rem hfull" />
-      </NuxtLink>
-      <NuxtLink :to="`/movie/${recommendations[1].id}`">
-        <MediaCardBig :item="recommendations[1]" :type="type" :show-details="true" class="min-w-25rem min-h-17rem hfull" />
-      </NuxtLink>
-      <NuxtLink :to="`/movie/${recommendations[2].id}`">
-        <MediaCardBig :item="recommendations[2]" :type="type" :show-details="true" class="min-w-25rem min-h-17rem hfull" />
-      </NuxtLink>
-      <NuxtLink :to="`/movie/${recommendations[3].id}`">
-        <MediaCardBig :item="recommendations[3]" :type="type" :show-details="true" class="min-w-25rem min-h-17rem hfull" />
-      </NuxtLink>
+      <MediaCardBig :item="item" :type="type" :trailer="trailer" :show-details="true" class="min-w-25rem min-h-17rem " />
+      <MediaCardBig :item="recommendations[1]" :type="type" :show-details="true" class="min-w-25rem min-h-17rem" />
+      <MediaCardBig :item="recommendations[2]" :type="type" :show-details="true" class="min-w-25rem min-h-17rem" />
+      <MediaCardBig :item="recommendations[3]" :type="type" :show-details="true" class="min-w-25rem min-h-17rem" />
     </Slider>
   </div>
   <div grid grid-cols-8 gap-7 lt-xl:px5>
