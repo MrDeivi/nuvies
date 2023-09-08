@@ -18,6 +18,13 @@ const siteStore = useSiteStore()
 onBeforeMount(() => {
   siteStore.blurMediaUrl = data.value[0].backdrop_path
 })
+
+useHead({
+  title: `Discover ${type.value === 'movie' ? 'movies' : 'tv shows'}`,
+  meta: [
+    { name: 'description', content: 'Discover hundred of movies and tv shows on Nuvies' },
+  ],
+})
 </script>
 
 <template>

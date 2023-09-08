@@ -34,6 +34,16 @@ watch([type, toggle], () => {
   reset()
   router.push(`/${type.value}/explore/${query}`)
 })
+
+const $img = useImage()
+
+useHead({
+  title: `Discover ${type.value === 'movie' ? 'movies' : 'tv shows'}`,
+  meta: [
+    { name: 'description', content: `Discover hundred of ${type.value === 'movie' ? 'movies' : 'tv shows'} on Nuvies` },
+    // { property: 'og:image', content: $img(`/tmdb${person.profile_path}`, { width: 1200, height: 630 }) },
+  ],
+})
 </script>
 
 <template>
@@ -42,7 +52,7 @@ watch([type, toggle], () => {
       <TextHeader>
         {{ title }}
       </TextHeader>
-      <Toggle v-model:model-value="toggle" :options="options" lt-md="text-sm mt3" />
+      <Toggle v-model:model-value="toggle" :options="options" lt-md="text-sm mt3 w-full" />
     </div>
     <MediaGrid :type="type" :items="data" :fetch-more="fetchMore" :loading="loading" class="lt-md:!px5" />
     <Loader v-show="loading" />

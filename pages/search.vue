@@ -53,6 +53,13 @@ watch(data, () => {
       siteStore.blurMediaUrl = (data.value[0] as Person).profile_path
   }
 })
+
+useHead({
+  title: computed(() => !data.value.length ? 'Search on Nuvies' : `Search results - ${query.value ?? searchInput.value}`),
+  meta: [
+    { name: 'description', content: 'Discover hundred of movies and tv shows in Nuvies' },
+  ],
+})
 </script>
 
 <template>

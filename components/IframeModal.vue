@@ -21,7 +21,7 @@ onClickOutside(el, () => {
 </script>
 
 <template>
-  <div v-if="src" fixed top-0 left-0 right-0 bottom-0 z-100 bg-black:90 flex>
+  <div v-if="src" fixed top-0 left-0 right-0 bottom-0 z-1000 bg-black:90 flex>
     <button absolute top-5 right-3 z-100 p3 text-3xl n-link bg-white:10 rounded-full @click="src = null">
       <div i-carbon-close />
     </button>

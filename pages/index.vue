@@ -19,6 +19,14 @@ onMounted(() => {
     itemDetails.value = data
   })
 })
+
+useHead({
+  title: 'Nuvies',
+  meta: [
+    { name: 'description', content: 'Discover hundred of movies and tv shows in Nuvies' },
+    // { property: 'og:image', content: $img(`/tmdb${person.profile_path}`, { width: 1200, height: 630 }) },
+  ],
+})
 </script>
 
 <template>

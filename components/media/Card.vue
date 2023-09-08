@@ -1,11 +1,14 @@
 <script setup lang="ts">
 import type { Media, MediaType } from '~/types'
 
-defineProps<{
+const props = defineProps<{
   item: Media
   type: MediaType
   cardClass?: string
 }>()
+
+const $img = useImage()
+const imgSmall = $img(`/tmdb${props.item.poster_path}`, { width: 100, height: 200 })
 </script>
 
 <template>
@@ -19,7 +22,15 @@ defineProps<{
       transition duration-400 rounded-xl relative
     >
       <div overflow="hidden" h-full bg-white:10 mb3 wfull rounded-xl>
-        <NuxtImg
+        <ImageBlurLoader
+          v-if="item.poster_path"
+          :big-image-src="`/tmdb${item.poster_path}`"
+          :small-image-src="imgSmall"
+          format="webp" width="400"
+          height="600" :alt="item.title || item.name"
+          h-full w-full object-cover contain-layout rounded-xl group-hover="scale-103"
+        />
+        <!-- <NuxtImg
           v-if="item.poster_path"
           width="400"
           height="600"
@@ -28,16 +39,15 @@ defineProps<{
           :alt="item.title || item.name"
           w-full h-full object-cover contain-layout rounded-xl group-hover="scale-103"
           transition="all duration-200"
-        />
+        /> -->
       </div>
 
       <NuxtImg
-        v-if="item.poster_path"
+        v-if="imgSmall"
         width="400"
         height="600"
         format="webp"
-        :src="`/tmdb${item.poster_path}`"
-        :alt="item.title || item.name"
+        :src="imgSmall"
         class="z--10  w-70% left-50% group-hover:op0 transition-all duration-700"
         absolute blur-lg opacity="10" h-4rem bottom-0 transform="translate-x--50% translate-y--5"
       />

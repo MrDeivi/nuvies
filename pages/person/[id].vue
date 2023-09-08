@@ -9,6 +9,16 @@ const siteStore = useSiteStore()
 onBeforeMount(() => siteStore.blurMediaUrl = person.profile_path)
 
 const show = useImageModal()
+
+const $img = useImage()
+
+useHead({
+  title: person.name,
+  meta: [
+    { name: 'description', content: person.biography || person.name },
+    { property: 'og:image', content: $img(`/tmdb${person.profile_path}`, { width: 1200, height: 630 }) },
+  ],
+})
 </script>
 
 <template>

@@ -11,6 +11,14 @@ const siteStore = useSiteStore()
 onBeforeMount(() => {
   siteStore.blurMediaUrl = data.value[0].profile_path
 })
+
+useHead({
+  title: 'Discover trending people',
+  meta: [
+    { name: 'description', content: 'Discover hundred of movies and tv shows on Nuvies' },
+    // { property: 'og:image', content: $img(`/tmdb${person.profile_path}`, { width: 1200, height: 630 }) },
+  ],
+})
 </script>
 
 <template>

@@ -3,6 +3,9 @@ import type { Person } from '~/types'
 
 const props = defineProps<{ person: Person }>()
 const imgLoaded = ref(false)
+
+const $img = useImage()
+const imgSmall = $img(`/tmdb${props.person.profile_path}`, { width: 100, height: 150 })
 </script>
 
 <template>
@@ -11,18 +14,19 @@ const imgLoaded = ref(false)
       block bg-gray4:10
       class="group aspect-10/16"
       transition duration-400 rounded-xl relative
+      :class="{ 'overflow-hidden': !imgLoaded }"
     >
-      <NuxtImg
+      <ImageBlurLoader
         v-if="person.profile_path"
+        :big-image-src="`/tmdb${person.profile_path}`"
+        :small-image-src="imgSmall"
+        format="webp"
         width="500"
         height="800"
-        format="webp"
-        :src="`/tmdb${person.profile_path}`"
         :alt="person.name"
-        border
-        border-white:10 w-full
-        h-full object-cover rounded-xl hover="opacity-80" transition="all duration-200"
-        @load="imgLoaded = true"
+        shadow-lg border border-white:10 w-full h-full object-cover
+        rounded-xl hover="opacity-80"
+        @big-loaded="imgLoaded = true"
       />
       <div v-else h-full op10 justify="center" items-center flex>
         <div i-ph:user text-6rem />

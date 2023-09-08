@@ -8,18 +8,33 @@ function playTrailer() {
   if (props.trailer)
     showModal(props.trailer)
 }
+
+const $img = useImage()
+const imgSmall = $img(`/tmdb${props.item.backdrop_path}`, { width: 150, height: 100 })
 </script>
 
 <template>
   <div col-span-8 lg:col-span-6 h-auto max-h-60vh relative rounded-xl bg-white:10 overflow="hidden">
-    <NuxtImg
+    <ImageBlurLoader
+      :big-image-src="`/tmdb${item.backdrop_path}`"
+      :small-image-src="imgSmall"
+      format="webp" width="600" height="325" :alt="item.title || item.name"
+      h-full w-full object-cover shadow-lg
+    />
+    <!-- <NuxtImg
+      format="webp"
+      :src="imgSmall"
+      :alt="item.title || item.name"
+      h-full w-full object-cover shadow-lg
+    /> -->
+    <!-- <NuxtImg
       width="600"
       height="325"
       format="webp"
       :src="`/tmdb${item.backdrop_path}`"
       :alt="item.title || item.name"
       h-full w-full object-cover shadow-lg
-    />
+    /> -->
     <BadgePrimary absolute top-3 right-0 z-10 md:hidden />
     <div md:hidden absolute bottom-0 left-0 bg-gradient-to-t from-black:70 via-black:70 p4 wfull>
       <h2 text="2xl" font="bold" text-shadow-xl>

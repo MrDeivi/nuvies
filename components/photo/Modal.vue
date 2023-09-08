@@ -36,7 +36,7 @@ useEventListener('keydown', (e) => {
 </script>
 
 <template>
-  <div v-if="images && current" fixed top-0 left-0 right-0 bottom-0 z-100 bg-black:90 p5 flex items-center justify-center>
+  <div v-if="images && current" fixed top-0 left-0 right-0 bottom-0 z-1000 bg-black:90 p5 flex items-center justify-center>
     <button absolute top-5 right-3 z-100 p3 text-3xl n-link bg-white:10 rounded-full @click="images = null">
       <div i-carbon-close />
     </button>
