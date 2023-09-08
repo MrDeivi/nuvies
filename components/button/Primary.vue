@@ -4,8 +4,8 @@
 
 <template>
   <button
-    bg-primary-500
-    py2 px3 rounded-xl cursor-pointer hover:bg-primary-400 flex space="x2" items-center transition="all duration-200"
+    bg-primary-600
+    py2 px3 rounded-xl cursor-pointer hover:bg-primary-500 flex space="x2" items-center transition="all duration-200"
   >
     <slot />
   </button>

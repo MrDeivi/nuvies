@@ -21,20 +21,7 @@ const imgSmall = $img(`/tmdb${props.item.backdrop_path}`, { width: 150, height: 
       format="webp" width="600" height="325" :alt="item.title || item.name"
       h-full w-full object-cover shadow-lg
     />
-    <!-- <NuxtImg
-      format="webp"
-      :src="imgSmall"
-      :alt="item.title || item.name"
-      h-full w-full object-cover shadow-lg
-    /> -->
-    <!-- <NuxtImg
-      width="600"
-      height="325"
-      format="webp"
-      :src="`/tmdb${item.backdrop_path}`"
-      :alt="item.title || item.name"
-      h-full w-full object-cover shadow-lg
-    /> -->
+
     <BadgePrimary absolute top-3 right-0 z-10 md:hidden />
     <div md:hidden absolute bottom-0 left-0 bg-gradient-to-t from-black:70 via-black:70 p4 wfull>
       <h2 text="2xl" font="bold" text-shadow-xl>

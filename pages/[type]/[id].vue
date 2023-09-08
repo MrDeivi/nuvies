@@ -18,6 +18,12 @@ const $img = useImage()
 const siteStore = useSiteStore()
 onBeforeMount(() => siteStore.blurMediaUrl = item.backdrop_path)
 
+const showModal = useIframeModal()
+function playTrailer() {
+  if (trailer.value)
+    showModal(trailer.value)
+}
+
 useHead({
   title: item.name || item.title,
   meta: [
@@ -30,7 +36,15 @@ useHead({
 <template>
   <div flex justify="center">
     <div wfull max-w-80rem lt-xl="px5">
-      <MediaCardBig :type="type" :trailer="trailer" :item="item" />
+      <MediaCardBig :type="type" :trailer="trailer" :item="item" class="min-h-17rem hfull" />
+    </div>
+  </div>
+  <div flex justify="center">
+    <div wfull lt-xl="px5" mt5>
+      <ButtonPrimary v-if="trailer" wfull text-center md:hidden justify="center" h12 @click="playTrailer">
+        <span i-solar:play-bold />
+        <span>Play Trailer</span>
+      </ButtonPrimary>
     </div>
   </div>
 
