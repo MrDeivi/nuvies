@@ -18,7 +18,7 @@ export async function usePaginatedFetch<T = any>(fetchFn: (page: number) => Prom
     const { results, total_pages } = await fetchFn(page.value) as PageResult<T>
 
     setResults(results)
-    isLastPage.value = total_pages === page.value
+    isLastPage.value = page.value >= total_pages
     pending.value = false
   }
 

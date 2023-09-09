@@ -48,7 +48,7 @@ useHead({
 
 <template>
   <div class="">
-    <div px7 flex items-center justify="between" lt-md="items-start flex-col px5" sticky z-90 top-1.5rem>
+    <div px7 flex items-center justify="between" lt-md="items-start flex-col px5 sticky" z-90 top-1.5rem>
       <TextHeader>
         {{ title }}
       </TextHeader>

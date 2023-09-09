@@ -22,7 +22,10 @@ const searchInput = ref('')
 const debouncedSearchInput = debouncedRef(searchInput, 500)
 
 async function fetch(page: number): Promise<any> {
-  const q = searchInput.value ?? query.value
+  const si = searchInput.value.trim()
+  const queryVal = query.value?.toString().trim()
+  const q = si.length ? si : queryVal
+
   if (!q)
     return { results: [], total_pages: 0 }
   try {
@@ -37,14 +40,17 @@ async function fetch(page: number): Promise<any> {
 const { data, execute, fetchMore: loadMore, loading, reset } = await usePaginatedFetch<any>(fetch, 'search')
 
 function fetchMore() {
-  if (query.value || debouncedSearchInput.value)
+  if ((query.value || debouncedSearchInput.value) && !loading.value)
     loadMore()
 }
 
 watch([type, debouncedSearchInput], async () => {
+  console.log('pasa')
+
   reset()
   await execute()
 })
+
 watch(data, () => {
   if (data.value.length) {
     if (type.value === 'movie' || type.value === 'tv')
@@ -60,13 +66,15 @@ useHead({
     { name: 'description', content: 'Discover hundred of movies and tv shows in Nuvies' },
   ],
 })
+
+onMounted(() => execute())
 </script>
 
 <template>
   <div flex="~ col" justify="center" class="2xl:max-w-90rem xl:max-w-70rem w-full m-auto" lt-xl="px5">
-    <div flex items-center mb10 justify="between" lt-lg="flex-col !justify-start items-start space-y-4">
+    <div flex flex-row-reverse mb10 justify="between" lt-xl="flex-col !justify-start items-start space-y-4">
       <div
-        my-2 w-full flex items-center justify-center relative
+        my-2 w-full flex items-center justify-center relative xl-hidden
       >
         <div flex="~ " justify="center" align="content-center" w-full>
           <div
@@ -86,7 +94,7 @@ useHead({
       </div>
 
       <Toggle v-model:model-value="toggle" :options="options" w30rem lt-lg="w-full" />
-      <TextHeader op0 :class="{ 'opacity-100': query || searchInput }">
+      <TextHeader op0 :class="{ 'opacity-100': query || searchInput }" mt2>
         Search results for: {{ query ?? searchInput }}
       </TextHeader>
     </div>

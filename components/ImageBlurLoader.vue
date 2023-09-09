@@ -11,7 +11,11 @@ const currentSrc = ref(props.smallImageSrc)
 function loadedBigImage() {
   currentSrc.value = props.bigImageSrc
   emit('bigLoaded')
-  nextTick(() => loaded.value = true)
+  //   nextTick(() => loaded.value = true)
+
+  setTimeout(() => {
+    loaded.value = true
+  }, 100)
 }
 
 const target = ref()
@@ -25,7 +29,7 @@ useIntersectionObserver(target, ([{ isIntersecting }], observerElement) => {
 <template>
   <NuxtImg
     ref="target"
-    transition-all duration-500
+    transition-all duration-300
     :src="currentSrc"
     v-bind="$attrs"
     :class="{ 'blur-xl': !loaded }"

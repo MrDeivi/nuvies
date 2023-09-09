@@ -8,7 +8,7 @@ const props = defineProps<{
 }>()
 
 const $img = useImage()
-const imgSmall = $img(`/tmdb${props.item.poster_path}`, { width: 100, height: 200 })
+const imgSmall = $img(`/tmdb${props.item.poster_path}`, { width: 100, height: 160 })
 const imgBig = $img(`/tmdb${props.item.poster_path}`, { width: 500, height: 800 })
 </script>
 

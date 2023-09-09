@@ -47,7 +47,7 @@ const route = useRoute()
           <SidebarLink :to="{ path: '/recent' }" icon="i-solar:clock-circle-bold-duotone">
             Recent
           </SidebarLink>
-        </div>.
+        </div>
       </div>
     </div>
     <div mb-4 px-4 mt-auto>
