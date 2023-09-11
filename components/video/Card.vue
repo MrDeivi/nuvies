@@ -28,7 +28,7 @@ function play() {
         group-hover="scale-103"
       />
       <ButtonPrimary class="absoluteCenter" transform="scale-0" group-hover="scale-100" rounded-full>
-        <div i-ph-play ma text-3xl />
+        <div i-solar:play-bold ma text-3xl />
       </ButtonPrimary>
     </div>
     <div mt-2 font-bold text-lg>

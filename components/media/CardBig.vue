@@ -30,7 +30,7 @@ const imgSmall = $img(`/tmdb${props.item.backdrop_path}`, { width: 150, height: 
     </div>
     <div
       lt-md-hidden
-      absolute bottom-0 left-0 wfull backdrop="blur-lg" p="6"
+      absolute bottom-0 left-0 wfull backdrop="blur-md" p="6"
       class="bg-gradient-to-t from-transparent via-black:30  to-transparent"
     >
       <div class="flex flex-row items-center justify-between">
