@@ -15,7 +15,7 @@ function loadedBigImage() {
 
   setTimeout(() => {
     loaded.value = true
-  }, 100)
+  }, 1000)
 }
 
 const target = ref()

@@ -41,7 +41,7 @@ const directors = computed(() => props.item.credits?.crew.filter(person => perso
         <ul grid="~ cols-[max-content_1fr] lg:cols-[max-content_1fr_max-content_1fr] gap3" items-center>
           <template v-if="item.release_date">
             <div>
-              Release Date
+              Release Date:
             </div>
             <div>
               {{ formatDate(item.release_date) }}
@@ -49,7 +49,7 @@ const directors = computed(() => props.item.credits?.crew.filter(person => perso
           </template>
           <template v-if="item.runtime">
             <div>
-              Runtime
+              Runtime:
             </div>
 
             <div>
@@ -58,7 +58,7 @@ const directors = computed(() => props.item.credits?.crew.filter(person => perso
           </template>
           <template v-if="directors?.length">
             <div>
-              Director
+              Director:
             </div>
 
             <div flex="~ row wrap gap1">
@@ -75,7 +75,7 @@ const directors = computed(() => props.item.credits?.crew.filter(person => perso
           </template>
           <template v-if="item.budget">
             <div>
-              Budget
+              Budget:
             </div>
 
             <div>
@@ -84,7 +84,7 @@ const directors = computed(() => props.item.credits?.crew.filter(person => perso
           </template>
           <template v-if="item.revenue">
             <div>
-              Revenue
+              Revenue:
             </div>
 
             <div>
@@ -93,7 +93,7 @@ const directors = computed(() => props.item.credits?.crew.filter(person => perso
           </template>
           <template v-if="item?.genres?.length">
             <div>
-              Genre
+              Genre:
             </div>
 
             <div flex="~ row wrap gap1">
@@ -109,7 +109,7 @@ const directors = computed(() => props.item.credits?.crew.filter(person => perso
           </template>
           <template v-if="item.status">
             <div>
-              Status
+              Status:
             </div>
 
             <div>
@@ -118,7 +118,7 @@ const directors = computed(() => props.item.credits?.crew.filter(person => perso
           </template>
           <template v-if="item.original_language">
             <div>
-              Language
+              Language:
             </div>
 
             <div>
@@ -127,7 +127,7 @@ const directors = computed(() => props.item.credits?.crew.filter(person => perso
           </template>
           <template v-if="item?.production_companies?.length">
             <div>
-              Production
+              Production:
             </div>
 
             <div>

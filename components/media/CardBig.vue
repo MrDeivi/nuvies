@@ -11,12 +11,13 @@ function playTrailer() {
 
 const $img = useImage()
 const imgSmall = $img(`/tmdb${props.item.backdrop_path}`, { width: 150, height: 100 })
+const imgBig = $img(`/tmdb${props.item.backdrop_path}`, { width: 600, height: 325 })
 </script>
 
 <template>
   <div col-span-8 lg:col-span-6 h-auto max-h-60vh relative rounded-xl bg-white:10 overflow="hidden" @click="navigateTo(`/${type}/${item.id}`)">
     <ImageBlurLoader
-      :big-image-src="`/tmdb${item.backdrop_path}`"
+      :big-image-src="imgBig"
       :small-image-src="imgSmall"
       format="webp" width="600" height="325" :alt="item.title || item.name"
       h-full w-full object-cover shadow-lg
@@ -25,7 +26,7 @@ const imgSmall = $img(`/tmdb${props.item.backdrop_path}`, { width: 150, height: 
     <BadgePrimary absolute top-3 right-0 z-10 md:hidden />
     <div md:hidden absolute bottom-0 left-0 bg-gradient-to-t from-black:70 via-black:70 p4 wfull>
       <h2 text="2xl" font="bold" text-shadow-xl>
-        {{ item.title }}
+        {{ item.title ?? item.name }}
       </h2>
     </div>
     <div
@@ -36,7 +37,7 @@ const imgSmall = $img(`/tmdb${props.item.backdrop_path}`, { width: 150, height: 
       <div class="flex flex-row items-center justify-between">
         <div flex="~" justify-center items-center space="x3">
           <h2 text="4xl " font="bold">
-            {{ item.title }}
+            {{ item.title ?? item.name }}
           </h2>
           <ButtonPrimary v-if="trailer" @click="playTrailer">
             <span i-solar:play-bold flex />
