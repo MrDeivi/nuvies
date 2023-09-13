@@ -1,6 +1,6 @@
 <script setup lang="ts">
 const props = defineProps<{
-  error: any
+  error?: any
   message?: string
   title?: string
 }>()
@@ -15,18 +15,20 @@ function handleError() {
 </script>
 
 <template>
-  <div flex="~ col" h-screen text-center items-center justify-center gap4>
-    <slot v-if="$slots.icon" name="icon" />
-    <span v-else i-solar:sad-square-line-duotone text-8xl op40 />
-    <div text-3xl>
-      {{ title ? title : is404 ? 'This page could not be found' : 'An error occurred' }}
+  <NuxtLayout>
+    <div flex="~ col" h-screen text-center items-center justify-center gap4>
+      <slot v-if="$slots.icon" name="icon" />
+      <span v-else i-solar:sad-square-line-duotone text-8xl op40 />
+      <div text-3xl>
+        {{ title ? title : is404 ? 'This page could not be found' : 'An error occurred' }}
+      </div>
+      <div text-xl op50>
+        {{ message }}
+      </div>
+      <pre v-if="isDev">{{ error }}</pre>
+      <button hoverable px4 round py2 @click="handleError">
+        Go Back
+      </button>
     </div>
-    <div text-xl op50>
-      {{ message }}
-    </div>
-    <pre v-if="isDev">{{ error }}</pre>
-    <button hoverable px4 round py2 @click="handleError">
-      Go Back
-    </button>
-  </div>
+  </NuxtLayout>
 </template>
