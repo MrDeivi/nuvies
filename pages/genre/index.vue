@@ -24,8 +24,16 @@ useHead({
       </TextHeader>
     </div>
     <div grid="~ cols-minmax-10rem lg:cols-minmax-15rem" gap="x5 y15" p8 lt-lg="p5 gap-y5">
-      <div v-for="(genre, index) in results.genres" :key="index" class="group">
-        <NuxtLink :to="`/genre/movie/${genre.id}`">
+      <div
+        v-for="(genre, index) in results.genres" :key="index"
+        data-aos="fade-left"
+        :data-aos-delay="100 * index"
+        :data-aos-offset="-300"
+        class="group"
+      >
+        <NuxtLink
+          :to="`/genre/movie/${genre.id}`"
+        >
           <div
             bg-gradient-to-br from-primary-300:20 via-white:10 to-white:10 min-h30
             px4 py1 cursor-pointer z-1000 rounded-lg flex h10 items-center justify="center"

@@ -10,11 +10,14 @@ if (fetchMore?.value)
 <template>
   <div grid="~ cols-minmax-10rem lg:cols-minmax-15rem" gap="x5 y15" lt-md="gap-x-3 gap-y-10 p4" p8>
     <template
-      v-for="item in items"
+      v-for="(item, j) in items"
       :key="item.id"
     >
       <MediaCard
         v-if="item.poster_path"
+        data-aos="fade-left"
+        :data-aos-delay="100 * j"
+        :data-aos-offset="-300"
         :item="item"
         :type="type"
       />

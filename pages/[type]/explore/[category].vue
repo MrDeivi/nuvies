@@ -26,7 +26,7 @@ function getCategoryTitle(category: string) {
 
 const siteStore = useSiteStore()
 onBeforeMount(() => {
-  siteStore.blurMediaUrl = data.value[0].backdrop_path
+  siteStore.blurMediaUrl = data.value[1].poster_path
 })
 
 watch([type, toggle], () => {
