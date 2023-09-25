@@ -10,7 +10,7 @@ function playTrailer() {
 }
 
 const $img = useImage()
-const imgSmall = $img(`/tmdb${props.item.backdrop_path}`, { width: 150, height: 100 })
+const imgSmall = $img(`/tmdb${props.item.backdrop_path}`, { width: 150, height: 80 })
 const imgBig = $img(`/tmdb${props.item.backdrop_path}`, { width: 600, height: 325 })
 </script>
 

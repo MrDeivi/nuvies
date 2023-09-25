@@ -30,6 +30,7 @@
     "@iconify-json/iconoir": "^1.1.28",
     "@iconify-json/solar": "^1.1.1",
     "@iconify-json/svg-spinners": "^1.1.1",
+    "@iconify-json/simple-icons": "^1.1.55",
     "@nuxt/devtools": "^0.5.5",
     "@nuxt/image-edge": "1.0.0-rc.1-28105270.a3967a7",
     "@nuxtjs/color-mode": "^3.2.0",

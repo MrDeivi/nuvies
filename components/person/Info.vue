@@ -7,7 +7,7 @@ const { person } = toRefs(props)
 
 <template>
   <div flex flex-row lt-lg="flex-col" lt-xl="px-5">
-    <div relative w-20rem min-w-20rem m-auto>
+    <div relative w-20rem min-w-20rem lt-lg="m-auto">
       <NuxtImg
         width="400"
         height="600"
@@ -75,6 +75,9 @@ const { person } = toRefs(props)
             </div>
           </template>
         </ul>
+        <div wfull mt10>
+          <ExternalLinks v-if="person.external_ids" :links="person.external_ids" />
+        </div>
       </div>
     </div>
   </div>

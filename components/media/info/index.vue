@@ -135,6 +135,9 @@ const directors = computed(() => props.item.credits?.crew.filter(person => perso
             </div>
           </template>
         </ul>
+        <div wfull mt10>
+          <ExternalLinks v-if="item.external_ids" :links="item.external_ids" />
+        </div>
       </div>
     </div>
   </div>

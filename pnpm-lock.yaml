@@ -21,6 +21,9 @@ importers:
       '@iconify-json/iconoir':
         specifier: ^1.1.28
         version: registry.npmjs.org/@iconify-json/iconoir@1.1.28
+      '@iconify-json/simple-icons':
+        specifier: ^1.1.55
+        version: registry.npmjs.org/@iconify-json/simple-icons@1.1.55
       '@iconify-json/solar':
         specifier: ^1.1.1
         version: registry.npmjs.org/@iconify-json/solar@1.1.1
@@ -995,6 +998,14 @@ packages:
       '@iconify/types': registry.npmjs.org/@iconify/types@2.0.0
     dev: true
 
+  registry.npmjs.org/@iconify-json/simple-icons@1.1.55:
+    resolution: {integrity: sha512-bQG9NtG3EnJbNCuwBrTLjoyWX61djNvHCJ7cG+96qzcchFxAP2BVy9qug5YrTsJoOIaOsXqFrYFjITHyI8e4Og==, registry: https://registry.npmjs.com/, tarball: https://registry.npmjs.org/@iconify-json/simple-icons/-/simple-icons-1.1.55.tgz}
+    name: '@iconify-json/simple-icons'
+    version: 1.1.55
+    dependencies:
+      '@iconify/types': registry.npmjs.org/@iconify/types@2.0.0
+    dev: true
+
   registry.npmjs.org/@iconify-json/solar@1.1.1:
     resolution: {integrity: sha512-VN7vPHaUW5cASnm2iN986bwTMGans5zAk1cVYB6nAGDhWjqaBMS6bmYmlpAYpuLk08uMAp2YtLkC23XFQd1zhg==, registry: https://registry.npmjs.com/, tarball: https://registry.npmjs.org/@iconify-json/solar/-/solar-1.1.1.tgz}
     name: '@iconify-json/solar'
@@ -1097,10 +1108,10 @@ packages:
     engines: {node: '>= 14'}
     dev: true
 
-  registry.npmjs.org/@intlify/shared@9.3.0-beta.27:
-    resolution: {integrity: sha512-hPMsmVCs+ZUVHHU5VORG6LopzXZT7zmyVNqc9OQG80YpA/N4lT/pkJ4B6DTNIsv2C7mwfGM7RdK+0qPki43YgA==, registry: https://registry.npmjs.com/, tarball: https://registry.npmjs.org/@intlify/shared/-/shared-9.3.0-beta.27.tgz}
+  registry.npmjs.org/@intlify/shared@9.4.1:
+    resolution: {integrity: sha512-A51elBmZWf1FS80inf/32diO9DeXoqg9GR9aUDHFcfHoNDuT46Q+fpPOdj8jiJnSHSBh8E1E+6qWRhAZXdK3Ng==, registry: https://registry.npmjs.com/, tarball: https://registry.npmjs.org/@intlify/shared/-/shared-9.4.1.tgz}
     name: '@intlify/shared'
-    version: 9.3.0-beta.27
+    version: 9.4.1
     engines: {node: '>= 16'}
     dev: true
 
@@ -11255,7 +11266,7 @@ packages:
       vue-router:
         optional: true
     dependencies:
-      '@intlify/shared': registry.npmjs.org/@intlify/shared@9.3.0-beta.27
+      '@intlify/shared': registry.npmjs.org/@intlify/shared@9.4.1
       '@intlify/vue-i18n-bridge': registry.npmjs.org/@intlify/vue-i18n-bridge@0.8.0(vue-i18n@9.3.0-beta.17)
       '@intlify/vue-router-bridge': registry.npmjs.org/@intlify/vue-router-bridge@0.8.0(vue-router@4.2.2)(vue@3.3.4)
       ufo: registry.npmjs.org/ufo@1.1.2
