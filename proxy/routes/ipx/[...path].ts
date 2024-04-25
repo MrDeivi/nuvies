@@ -24,7 +24,7 @@ const ipware = new Ipware();
 const ratelimit = new Ratelimit({
 	redis: kv,
 	// 5 requests from the same IP in 10 seconds
-	limiter: Ratelimit.slidingWindow(15, '30 s'),
+	limiter: Ratelimit.slidingWindow(150, '30 s'),
 })
 
 export default eventHandler(async (event) => {
@@ -38,7 +38,14 @@ export default eventHandler(async (event) => {
 		ip.ip
 	)
 	
-	if(!success) return
+	if(!success) return new Response('You have reached your request limit.', {
+        status: 429,
+        headers: {
+          'X-RateLimit-Limit': limit.toString(),
+          'X-RateLimit-Remaining': remaining.toString(),
+          'X-RateLimit-Reset': reset.toString()
+        }
+      })
 
 	event.node.req.url = `/${event.context.params!.path}`
 	return ipxHandler(event)
