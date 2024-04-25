@@ -1,9 +1,10 @@
 const TMDB_API_URL = 'https://api.themoviedb.org/3'
 
-import { Ipware } from '@fullerstack/nax-ipware'
+import naxipware from '@fullerstack/nax-ipware'
 import { Ratelimit } from '@upstash/ratelimit'
 import { kv } from '@vercel/kv'
 
+const { Ipware } = naxipware
 const ipware = new Ipware();
 const ratelimit = new Ratelimit({
 	redis: kv,
