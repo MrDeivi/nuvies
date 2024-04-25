@@ -24,7 +24,7 @@ const ipware = new Ipware();
 const ratelimit = new Ratelimit({
 	redis: kv,
 	// 5 requests from the same IP in 10 seconds
-	limiter: Ratelimit.slidingWindow(150, '30 s'),
+	limiter: Ratelimit.slidingWindow(150, '86.400 s'),
 })
 
 export default eventHandler(async (event) => {
