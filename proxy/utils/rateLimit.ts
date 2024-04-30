@@ -18,15 +18,17 @@ export async function rateLimitRequest(req: any) {
 
   const BLOQUED_IP = process.env.BLOQUED_IP
   console.log(BLOQUED_IP, 'BLOQUED_IP')
+  console.log(typeof BLOQUED_IP, 'typeof BLOQUED_IP')
 
   const blackList: string[] = JSON.parse(BLOQUED_IP ?? '[]')
   console.log(blackList, 'blackList')
+  console.log(typeof blackList, 'typeof blackList')
 
   if (!ip?.ip)
     return { success: false }
 
-  //   if (isBlocked(ip?.ip))
-  //     return { success: false }
+  if (isBlocked(ip?.ip, blackList))
+    return { success: false }
 
   const { success, pending, limit, reset, remaining } = await ratelimit.limit(
     ip.ip,
@@ -46,6 +48,6 @@ export async function rateLimitRequest(req: any) {
   return { success, limit, pending, reset, remaining, error }
 }
 
-// function isBlocked(ip: string) {
-//   return blackList.includes(ip)
-// }
+function isBlocked(ip: string, blackList: string[]) {
+  return blackList.includes(ip)
+}
