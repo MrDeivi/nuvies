@@ -7,7 +7,7 @@ const { Ipware } = naxIpware
 const ipware = new Ipware()
 const ratelimit = new Ratelimit({
   redis: Redis.fromEnv(),
-  limiter: Ratelimit.cachedFixedWindow(20, '60s'),
+  limiter: Ratelimit.cachedFixedWindow(60, '60s'),
   ephemeralCache: new Map(),
   analytics: true,
 })
