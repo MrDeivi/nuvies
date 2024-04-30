@@ -1,11 +1,12 @@
 import naxIpware from '@fullerstack/nax-ipware'
 import { Ratelimit } from '@upstash/ratelimit'
-import { kv } from '@vercel/kv'
+
+import { Redis } from '@upstash/redis'
 
 const { Ipware } = naxIpware
 const ipware = new Ipware()
 const ratelimit = new Ratelimit({
-  redis: kv,
+  redis: Redis.fromEnv(),
   // 500 requests from the same IP in 1 hour
   limiter: Ratelimit.slidingWindow(500, '3600 s'),
 })
