@@ -7,8 +7,7 @@ const { Ipware } = naxIpware
 const ipware = new Ipware()
 const ratelimit = new Ratelimit({
   redis: Redis.fromEnv(),
-  // 500 requests from the same IP in 1 hour
-  limiter: Ratelimit.slidingWindow(10, '60 s'),
+  limiter: Ratelimit.cachedFixedWindow(20, '60s'),
 })
 
 export async function rateLimitRequest(req: any) {
