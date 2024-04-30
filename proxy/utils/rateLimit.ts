@@ -19,16 +19,17 @@ export async function rateLimitRequest(req: any) {
   const ip = ipware.getClientIP(req)
   console.log(ip)
 
-  console.log(BLOQUED_IP, 'BLOQUED_IP')
-
-  console.log(blackList, 'blackList')
-  console.log(typeof blackList, 'typeof blackList')
-
   if (!ip?.ip)
     return { success: false }
 
-  if (isBlocked(ip?.ip))
-    return { success: false }
+  if (isBlocked(ip?.ip)) {
+    return {
+      success: false,
+      error: new Response('You have reached your request limit.', {
+        status: 429,
+      }),
+    }
+  }
 
   const { success, pending, limit, reset, remaining } = await ratelimit.limit(
     ip.ip,
@@ -49,7 +50,5 @@ export async function rateLimitRequest(req: any) {
 }
 
 function isBlocked(ip: string) {
-  console.log('is isBlocked', blackList.includes(ip))
-
   return blackList.includes(ip)
 }
