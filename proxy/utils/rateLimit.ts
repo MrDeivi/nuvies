@@ -12,11 +12,18 @@ const ratelimit = new Ratelimit({
   analytics: true,
 })
 
+const BLOQUED_IP = process.env.BLOQUED_IP
+const blackList: string[] = JSON.parse(BLOQUED_IP ?? '[]')
+
 export async function rateLimitRequest(req: any) {
   const ip = ipware.getClientIP(req)
   console.log(ip)
+  console.log(blackList)
 
   if (!ip?.ip)
+    return { success: false }
+
+  if (isBlocked(ip?.ip))
     return { success: false }
 
   const { success, pending, limit, reset, remaining } = await ratelimit.limit(
@@ -35,4 +42,8 @@ export async function rateLimitRequest(req: any) {
     })
 
   return { success, limit, pending, reset, remaining, error }
+}
+
+function isBlocked(ip: string) {
+  return blackList.includes(ip)
 }
