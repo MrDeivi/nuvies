@@ -13,6 +13,8 @@ const ratelimit = new Ratelimit({
 
 export async function rateLimitRequest(req: any) {
   const ip = ipware.getClientIP(req)
+  console.log(ip)
+
   if (!ip?.ip)
     return { success: false }
 
