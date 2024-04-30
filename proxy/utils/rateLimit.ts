@@ -17,7 +17,9 @@ const blackList: string[] = JSON.parse(BLOQUED_IP ?? '[]')
 
 export async function rateLimitRequest(req: any) {
   const ip = ipware.getClientIP(req)
-  console.log(ip)
+  const blocked = isBlocked(ip?.ip)
+
+  console.log(`isBlocked: ${blocked} ip: ${ip?.ip} `)
 
   if (!ip?.ip)
     return { success: false }
@@ -49,6 +51,6 @@ export async function rateLimitRequest(req: any) {
   return { success, limit, pending, reset, remaining, error }
 }
 
-function isBlocked(ip: string) {
-  return blackList.includes(ip)
+function isBlocked(ip: string | undefined) {
+  return ip ? blackList.includes(ip) : true
 }
