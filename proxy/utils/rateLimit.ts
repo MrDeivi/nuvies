@@ -1,7 +1,8 @@
-import { Ipware } from '@fullerstack/nax-ipware'
+import naxIpware from '@fullerstack/nax-ipware'
 import { Ratelimit } from '@upstash/ratelimit'
 import { kv } from '@vercel/kv'
 
+const { Ipware } = naxIpware
 const ipware = new Ipware()
 const ratelimit = new Ratelimit({
   redis: kv,
