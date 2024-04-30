@@ -1,52 +1,27 @@
 import { createIPX, createIPXMiddleware } from 'ipx'
+import { rateLimitRequest } from '../../utils/rateLimit'
 
 const ipx = createIPX({
-	maxAge: 3600,
-	alias: {
-		'/tmdb': 'https://image.tmdb.org/t/p/original/',
-		'/youtube': 'https://img.youtube.com/',
-	},
-	domains: [
-		'image.tmdb.org',
-		'img.youtube.com',
-	],
+  maxAge: 3600,
+  alias: {
+    '/tmdb': 'https://image.tmdb.org/t/p/original/',
+    '/youtube': 'https://img.youtube.com/',
+  },
+  domains: [
+    'image.tmdb.org',
+    'img.youtube.com',
+  ],
 })
 
 const ipxMiddleware = createIPXMiddleware(ipx)
 const ipxHandler = fromNodeMiddleware(ipxMiddleware)
 
-
-import { Ipware } from '@fullerstack/nax-ipware'
-import { Ratelimit } from '@upstash/ratelimit'
-import { kv } from '@vercel/kv'
-
-const ipware = new Ipware();
-const ratelimit = new Ratelimit({
-	redis: kv,
-	// 5 requests from the same IP in 10 seconds
-	limiter: Ratelimit.slidingWindow(150, '86.400 s'),
-})
-
 export default eventHandler(async (event) => {
-	const ip = ipware.getClientIP(event.node.req)
+  const { success, error } = await rateLimitRequest(event.node.req)
 
-	//   const ip = event.node.req.socket.remoteAddress ?? event.node.req.headers['x-forwarded-for'] ?? '127.0.0.1'
+  if (!success)
+    return error
 
-	if (!ip?.ip) return
-
-	const { success, pending, limit, reset, remaining } = await ratelimit.limit(
-		ip.ip
-	)
-	
-	if(!success) return new Response('You have reached your request limit.', {
-        status: 429,
-        headers: {
-          'X-RateLimit-Limit': limit.toString(),
-          'X-RateLimit-Remaining': remaining.toString(),
-          'X-RateLimit-Reset': reset.toString()
-        }
-      })
-
-	event.node.req.url = `/${event.context.params!.path}`
-	return ipxHandler(event)
+  event.node.req.url = `/${event.context.params!.path}`
+  return ipxHandler(event)
 })

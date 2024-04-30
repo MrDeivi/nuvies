@@ -1,39 +1,12 @@
-import naxipware from '@fullerstack/nax-ipware'
-import { Ratelimit } from '@upstash/ratelimit'
-import { kv } from '@vercel/kv'
+import { rateLimitRequest } from '../../utils/rateLimit'
 
 const TMDB_API_URL = 'https://api.themoviedb.org/3'
 
-const { Ipware } = naxipware
-const ipware = new Ipware()
-const ratelimit = new Ratelimit({
-  redis: kv,
-  // 5 requests from the same IP in 10 seconds
-  limiter: Ratelimit.slidingWindow(10, '86400 s'),
-})
-
 export default defineEventHandler(async (event) => {
-  const ip = ipware.getClientIP(event.node.req)
+  const { success, error } = await rateLimitRequest(event.node.req)
 
-  //   const ip = event.node.req.socket.remoteAddress ?? event.node.req.headers['x-forwarded-for'] ?? '127.0.0.1'
-
-  if (!ip?.ip)
-    return
-
-  const { success, pending, limit, reset, remaining } = await ratelimit.limit(
-    ip.ip,
-  )
-
-  if (!success) {
-    return new Response('You have reached your request limit.', {
-      status: 429,
-      headers: {
-        'X-RateLimit-Limit': limit.toString(),
-        'X-RateLimit-Remaining': remaining.toString(),
-        'X-RateLimit-Reset': reset.toString(),
-      },
-    })
-  }
+  if (!success)
+    return error
 
   const query = getQuery(event)
   const config = useRuntimeConfig()
