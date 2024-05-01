@@ -1,56 +1,40 @@
 import naxIpware from '@fullerstack/nax-ipware'
-import { Ratelimit } from '@upstash/ratelimit'
-
-import { Redis } from '@upstash/redis'
 
 const { Ipware } = naxIpware
 const ipware = new Ipware()
-const ratelimit = new Ratelimit({
-  redis: Redis.fromEnv(),
-  limiter: Ratelimit.cachedFixedWindow(60, '60s'),
-  ephemeralCache: new Map(),
-  analytics: true,
-})
 
-const BLOQUED_IP = process.env.BLOQUED_IP
-const blackList: string[] = JSON.parse(BLOQUED_IP ?? '[]')
-
+const { REQUEST_LIMIT = 50 } = useRuntimeConfig()
 export async function rateLimitRequest(req: any) {
   const ip = ipware.getClientIP(req)
-  const blocked = isBlocked(ip?.ip)
-
-  console.log(`isBlocked: ${blocked} ip: ${ip?.ip} `)
 
   if (!ip?.ip)
     return { success: false }
 
-  if (isBlocked(ip?.ip)) {
-    return {
-      success: false,
-      error: new Response('You have reached your request limit.', {
-        status: 429,
-      }),
-    }
-  }
+  const { success } = await limit(ip?.ip)
 
-  const { success, pending, limit, reset, remaining } = await ratelimit.limit(
-    ip.ip,
-  )
+  console.log(`isBlocked: ${!success} ip: ${ip?.ip} `)
 
   const error = success
     ? null
     : new Response('You have reached your request limit.', {
       status: 429,
-      headers: {
-        'X-RateLimit-Limit': limit.toString(),
-        'X-RateLimit-Remaining': remaining.toString(),
-        'X-RateLimit-Reset': reset.toString(),
-      },
     })
 
-  return { success, limit, pending, reset, remaining, error }
+  return { success, error }
 }
 
-function isBlocked(ip: string | undefined) {
-  return ip ? blackList.includes(ip) : true
+const blackList: string[] = []
+const requestMap = new Map<string, number>()
+
+function limit(ip: string | undefined): { success: boolean } {
+  if (!ip)
+    return { success: false }
+
+  const requests = requestMap.get(ip) || 0
+  if (requests > REQUEST_LIMIT)
+    blackList.push(ip)
+  else
+    requestMap.set(ip, requests + 1)
+
+  return { success: !blackList.includes(ip) }
 }

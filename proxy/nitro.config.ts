@@ -10,5 +10,6 @@ export default defineNitroConfig({
     tmdb: {
       apiKey: process.env.TMDB_API_KEY || '',
     },
+    requestLimit: Number.parseInt(`${process.env.REQUEST_LIMIT ?? 50}`),
   },
 })
