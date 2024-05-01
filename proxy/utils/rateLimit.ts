@@ -10,9 +10,9 @@ export async function rateLimitRequest(req: any) {
   if (!ip?.ip)
     return { success: false }
 
-  const { success } = await limit(ip?.ip)
+  const { success, count } = await limit(ip?.ip)
 
-  console.log(`isBlocked: ${!success} ip: ${ip?.ip} `)
+  console.log(`isBlocked: ${!success} ip: ${ip?.ip} count: ${count}`)
 
   const error = success
     ? null
@@ -26,15 +26,14 @@ export async function rateLimitRequest(req: any) {
 const blackList: string[] = []
 const requestMap = new Map<string, number>()
 
-function limit(ip: string | undefined): { success: boolean } {
+function limit(ip: string | undefined): { success: boolean; count?: number } {
   if (!ip)
     return { success: false }
 
   const requests = requestMap.get(ip) || 0
   if (requests > REQUEST_LIMIT)
     blackList.push(ip)
-  else
-    requestMap.set(ip, requests + 1)
+  else requestMap.set(ip, requests + 1)
 
-  return { success: !blackList.includes(ip) }
+  return { success: !blackList.includes(ip), count: requests }
 }
