@@ -3,7 +3,7 @@ import naxIpware from '@fullerstack/nax-ipware'
 const { Ipware } = naxIpware
 const ipware = new Ipware()
 
-const { REQUEST_LIMIT = 50 } = useRuntimeConfig()
+const { REQUEST_LIMIT = 20 } = useRuntimeConfig()
 export async function rateLimitRequest(req: any) {
   const ip = ipware.getClientIP(req)
 
