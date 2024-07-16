@@ -7,7 +7,7 @@ export default defineEventHandler(async (event) => {
 
 	if (!success) {
 		console.log('Invalid request ');
-		return error
+		throw new Error('Ip blocked') 
 	}
 
 	const query = getQuery(event)
