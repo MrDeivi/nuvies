@@ -3,7 +3,7 @@ import { hash as ohash } from 'ohash'
 import type { Credits, Media, MediaType, PageResult, Person } from '../types'
 
 // const apiBaseUrl = 'http://localhost:3000'
-const apiBaseUrl = 'https://api.nuvies.deivi.me'
+const apiBaseUrl = 'https://api-2.nuvies.deivi.me'
 
 const promiseCache = new LRUCache<string, any>({
   max: 500,

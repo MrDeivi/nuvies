@@ -12,7 +12,7 @@ export async function rateLimitRequest(req: any) {
 
   const { success, count } = await limit(ip?.ip)
 
-  console.log(`isBlocked: ${!success} ip: ${ip?.ip} count: ${count}`)
+  console.log(`isBlocked: ${!success} | ip: ${ip?.ip} | count: ${count}`)
 
   const error = success
     ? null
